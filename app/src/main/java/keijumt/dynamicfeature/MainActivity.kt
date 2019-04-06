@@ -3,19 +3,33 @@ package keijumt.dynamicfeature
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.google.android.play.core.splitcompat.SplitCompat
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
+import keijumt.dynamicfeature.di.Injector
+import keijumt.dynamicfeature.di.ViewModelFactory
+import keijumt.dynamicfeature.ui.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.btn_feature1
 import kotlinx.android.synthetic.main.activity_main.btn_feature2
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inject!!
+        Injector.inject(this)
+
         setContentView(R.layout.activity_main)
+
+        val mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
 
         val splitInstallManager = SplitInstallManagerFactory.create(this)
 
@@ -71,6 +85,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         splitInstallManager.registerListener(listener)
-    }
 
+        mainViewModel.onCreate()
+    }
 }

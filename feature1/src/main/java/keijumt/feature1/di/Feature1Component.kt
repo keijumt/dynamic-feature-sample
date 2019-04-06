@@ -5,6 +5,7 @@ import keijumt.core.di.CoreComponent
 import keijumt.core.di.ModuleScope
 import keijumt.dynamicfeature.di.ViewModelModule
 import keijumt.feature1.Feature1Activity
+import keijumt.feature1.Feature1Fragment
 
 @ModuleScope
 @Component(
@@ -24,4 +25,5 @@ interface Feature1Component {
     }
 
     fun inject(activity: Feature1Activity)
+    fun inject(fragment: Feature1Fragment)
 }

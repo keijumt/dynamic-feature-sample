@@ -4,4 +4,8 @@ import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
 class Feature1ViewModel @Inject constructor() : ViewModel() {
+
+    fun onCreate() {
+        println("onCreate")
+    }
 }

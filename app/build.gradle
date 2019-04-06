@@ -36,5 +36,6 @@ dependencies {
     api 'com.google.android.play:core:1.4.0'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation "com.google.dagger:dagger:2.22.1"
     kapt "com.google.dagger:dagger-compiler:2.22.1"
 }

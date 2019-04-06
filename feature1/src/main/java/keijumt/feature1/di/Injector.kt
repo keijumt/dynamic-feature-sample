@@ -1,16 +1,16 @@
-package keijumt.dynamicfeature.di
+package keijumt.feature1.di
 
 import keijumt.dynamicfeature.App
-import keijumt.dynamicfeature.MainActivity
+import keijumt.feature1.Feature1Activity
 
 internal object Injector {
 
     /**
-     * MainActivityにInject!!
+     * Feature1ActivityにInject!!
      */
-    fun inject(activity: MainActivity) {
+    fun inject(activity: Feature1Activity) {
         val coreComponent = (activity.application as App).coreComponent
-        val component = DaggerAppComponent
+        val component = DaggerFeature1Component
             .builder()
             .coreComponent(coreComponent)
             .build()
